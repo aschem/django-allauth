@@ -28,6 +28,8 @@ USERNAME_REQUIRED = getattr(settings, "ACCOUNT_USERNAME_REQUIRED", True)
 # render_value parameter as passed to PasswordInput fields
 PASSWORD_INPUT_RENDER_VALUE = getattr(settings, "ACCOUNT_PASSWORD_INPUT_RENDER_VALUE", False)
 
+SEND_EMAIL_NOTIFICATION = getattr(settings, "SEND_EMAIL_NOTIFICATION", False)
+
 assert (not EMAIL_AUTHENTICATION) or EMAIL_REQUIRED
 assert (not EMAIL_AUTHENTICATION) or UNIQUE_EMAIL
 assert (not EMAIL_VERIFICATION) or EMAIL_REQUIRED
