@@ -103,6 +103,9 @@ ACCOUNT_SIGNUP_PASSWORD_VERIFICATION (=True)
 ACCOUNT_UNIQUE_EMAIL (=True)
   Enforce uniqueness of e-mail addresses.
 
+ACCOUNT_SEND_EMAIL_NOTIFICATION (=False)
+  If False it does not send email notifications.
+
 ACCOUNT_USERNAME_REQUIRED (=True)
   If false, generates a random username rather than prompting for one
   at signup.
