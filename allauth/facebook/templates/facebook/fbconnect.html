@@ -10,6 +10,13 @@
       oauth      : true,
       xfbml      : true
     });
+    FB.getLoginStatus(function(response) {
+        var is_authenticated = {{ request.user.is_authenticated|yesno:"true,false" }};
+        var current_path = window.location.pathname;
+        if (is_authenticated && response.status != 'connected' && current_path != '{{ login_url }}') {
+            window.location.href = '{% url logout %}' + '?next=' + current_path;
+        }
+    });
     window.FB_login = function(nextUrl) {
       FB.login(function(response) {
         if (response.authResponse) {

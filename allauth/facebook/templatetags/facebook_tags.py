@@ -11,7 +11,9 @@ register = template.Library()
 def fbconnect(context):
     return {'facebook_app': FacebookApp.objects.get_current(),
             'facebook_channel_url': context['request'].build_absolute_uri(reverse('facebook_channel')),
-            'facebook_perms': FACEBOOK_PERMS}
+            'facebook_perms': FACEBOOK_PERMS,
+            'login_url': settings.LOGIN_URL,
+            'request': context['request']}
 
 class FacebookLoginURLNode(template.Node):
     def __init__(self, params):
