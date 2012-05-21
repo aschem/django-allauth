@@ -10,6 +10,7 @@
       oauth      : true,
       xfbml      : true
     });
+  {% if check_login_status %}
     FB.getLoginStatus(function(response) {
         var is_authenticated = {{ request.user.is_authenticated|yesno:"true,false" }};
         var current_path = window.location.pathname;
@@ -17,6 +18,7 @@
             window.location.href = '{% url logout %}' + '?next=' + current_path;
         }
     });
+  {% endif %}
     window.FB_login = function(nextUrl) {
       FB.login(function(response) {
         if (response.authResponse) {

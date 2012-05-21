@@ -13,6 +13,7 @@ def fbconnect(context):
             'facebook_channel_url': context['request'].build_absolute_uri(reverse('facebook_channel')),
             'facebook_perms': FACEBOOK_PERMS,
             'login_url': settings.LOGIN_URL,
+            'check_login_status': context.get('check_login_status', False)
             'request': context['request']}
 
 class FacebookLoginURLNode(template.Node):
