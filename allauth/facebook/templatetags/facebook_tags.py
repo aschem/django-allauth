@@ -4,19 +4,14 @@ from django.core.urlresolvers import reverse
 from django.template.defaulttags import token_kwargs
 
 from allauth.facebook.models import FacebookApp
-from allauth.socialaccount.app_settings import QUERY_EMAIL
+from allauth.socialaccount.app_settings import FACEBOOK_PERMS
 
 register = template.Library()
 
 def fbconnect(context):
-    perm_list = []
-    if QUERY_EMAIL:
-        perm_list.append('email')
-    perms = ','.join(perm_list)
-    request = context['request']
     return {'facebook_app': FacebookApp.objects.get_current(),
-            'facebook_channel_url': request.build_absolute_uri(reverse('facebook_channel')),
-            'facebook_perms': perms}
+            'facebook_channel_url': context['request'].build_absolute_uri(reverse('facebook_channel')),
+            'facebook_perms': FACEBOOK_PERMS}
 
 class FacebookLoginURLNode(template.Node):
     def __init__(self, params):

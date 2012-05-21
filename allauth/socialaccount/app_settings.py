@@ -15,3 +15,6 @@ AUTO_SIGNUP = getattr(settings, "SOCIALACCOUNT_AUTO_SIGNUP", True)
 # the user is copied locally into django-avatar at signup.
 AVATAR_SUPPORT = getattr(settings, "SOCIALACCOUNT_AVATAR_SUPPORT",
                          'avatar' in settings.INSTALLED_APPS)
+
+FACEBOOK_PERMS = getattr(settings, "SOCIALACCOUNT_SCOPE", 
+                         account_settings.FACEBOOK_PERMS)
