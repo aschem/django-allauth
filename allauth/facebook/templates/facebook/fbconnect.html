@@ -10,6 +10,7 @@
       oauth      : true,
       xfbml      : true
     });
+  fbApiInit = true; //init flag
   {% if check_login_status %}
     FB.getLoginStatus(function(response) {
         var is_authenticated = {{ request.user.is_authenticated|yesno:"true,false" }};
