@@ -11,6 +11,7 @@ from django.contrib.sites.models import Site
 
 from allauth.utils import get_login_redirect_url
 from allauth.account.views import signup as account_signup
+from allauth.socialaccount.app_settings import LOGIN_ERROR_REDIRECT
 
 from models import SocialAccount
 from forms import DisconnectForm, SignupForm
@@ -54,6 +55,8 @@ def login_cancelled(request):
                               d, context_instance=RequestContext(request))
 
 def login_error(request):
+    if LOGIN_ERROR_REDIRECT:
+        return HttpResponseRedirect(LOGIN_ERROR_REDIRECT)
     return helpers.render_authentication_error(request)
 
 

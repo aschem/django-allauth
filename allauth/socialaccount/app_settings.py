@@ -18,3 +18,5 @@ AVATAR_SUPPORT = getattr(settings, "SOCIALACCOUNT_AVATAR_SUPPORT",
 
 FACEBOOK_PERMS = getattr(settings, "SOCIALACCOUNT_SCOPE", 
                          account_settings.FACEBOOK_PERMS)
+
+LOGIN_ERROR_REDIRECT = getattr(settings, "SOCIALACCOUNT_LOGIN_ERROR_REDIRECT", None)
