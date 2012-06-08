@@ -79,10 +79,7 @@ def perform_login(request, user, redirect_url=None):
     if not hasattr(user, 'backend'):
         user.backend = "django.contrib.auth.backends.ModelBackend"
     user_logged_in.send(sender=user.__class__, request=request, user=user)
-    login(request, user)
-    messages.add_message(request, messages.SUCCESS,
-                         ugettext("Successfully signed in as %(user)s.") % { "user": user_display(user) } )
-            
+    login(request, user)            
     if not redirect_url:
         redirect_url = get_default_redirect(request)
     return HttpResponseRedirect(redirect_url)

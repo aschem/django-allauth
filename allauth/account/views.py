@@ -243,9 +243,6 @@ def password_reset_from_key(request, uidb36, key, **kwargs):
 
 
 def logout(request, **kwargs):
-    messages.add_message(request, messages.SUCCESS,
-        ugettext("You have signed out.")
-    )
     kwargs['template_name'] = kwargs.pop('template_name', 'account/logout.html')
     from django.contrib.auth.views import logout as _logout
     return _logout(request, **kwargs)
